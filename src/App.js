@@ -6,8 +6,9 @@ import FeedbackStats from "./components/FeedbackStats";
 import Header from "./components/Header";
 import FeedbackData from "./data/FeedbackData";
 import AboutPage from "./pages/AboutPage";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
 import AboutIconLink from "./components/AboutIconLink";
+import Post from "./components/Post";
 
 function App() {
   const [feedback, setFeedback] = useState(FeedbackData);
@@ -39,12 +40,14 @@ function App() {
                   feedback={feedback}
                   handleDelete={deleteFeedback}
                 />
-                <AboutIconLink />
               </>
             }
           />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/post/:id/:name" element={<Post />} />
         </Routes>
+
+        <AboutIconLink />
       </div>
     </BrowserRouter>
   );
