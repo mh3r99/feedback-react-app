@@ -40,6 +40,7 @@ header {
   margin: 20px 0;
   position: relative;
 }
+
 .card.reverse {
   background-color: rgba(0, 0, 0, 0.4);
   color: #fff;
@@ -130,13 +131,18 @@ input:focus {
   left: -10px;
 }
 
-.close {
+.close,
+.edit {
   position: absolute;
   top: 10px;
   right: 20px;
   cursor: pointer;
   background: none;
   border: none;
+}
+
+.edit {
+  right: 40px;
 }
 
 .btn {
