@@ -1,9 +1,7 @@
-import { useState } from "react";
 import FeedbackForm from "./components/FeedbackForm";
 import FeedbackList from "./components/FeedbackList";
 import FeedbackStats from "./components/FeedbackStats";
 import Header from "./components/Header";
-import FeedbackData from "./data/FeedbackData";
 import AboutPage from "./pages/AboutPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AboutIconLink from "./components/AboutIconLink";
@@ -18,7 +16,6 @@ function App() {
           <Routes>
             <Route
               path="/"
-              exact
               element={
                 <>
                   <FeedbackForm />

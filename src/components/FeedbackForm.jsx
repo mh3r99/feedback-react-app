@@ -6,7 +6,7 @@ import Card from "./shared/Card";
 
 function FeedbackForm() {
   const [text, setText] = useState("");
-  const [rating, setRating] = useState();
+  const [rating, setRating] = useState(10);
   const [btnDisabled, setBtnDisabled] = useState(true);
   const [message, setMessage] = useState("");
 
@@ -22,17 +22,18 @@ function FeedbackForm() {
   }, [feedbackEdit]);
 
   const handleTextChange = (e) => {
-    if (!text) {
+    const { value } = e.target;
+    if (!value) {
       setBtnDisabled(true);
       setMessage(null);
-    } else if (text.trim().length <= 10) {
+    } else if (value.trim().length <= 10) {
       setMessage("Text must be at least 10 characters");
       setBtnDisabled(true);
     } else {
       setBtnDisabled(false);
       setMessage(null);
     }
-    setText(e.target.value);
+    setText(value);
   };
 
   const handleSubmit = (e) => {
@@ -49,6 +50,8 @@ function FeedbackForm() {
         addFeedback(newFeedback);
       }
 
+      setBtnDisabled(true);
+      setRating(10);
       setText("");
     }
   };
@@ -57,11 +60,7 @@ function FeedbackForm() {
     <Card>
       <form onSubmit={handleSubmit}>
         <h2>How would you rate your service with us?</h2>
-        <RatingSelect
-          select={(rating) => {
-            setRating(rating);
-          }}
-        />
+        <RatingSelect setRating={setRating} selected={rating} />
         <div className="input-group">
           <input
             onChange={handleTextChange}
